@@ -5,21 +5,15 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import { Route } from "next";
 
-type NavItem = {
-  label: string;
-  href: Route;
-};
-
-const navItems: NavItem[] = [
+const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
-];
+] as const;
 
 export default function Navbar() {
   const pathname = usePathname();
