@@ -5,8 +5,14 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { Route } from "next";
 
-const navItems = [
+type NavItem = {
+  label: string;
+  href: Route;
+};
+
+const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
