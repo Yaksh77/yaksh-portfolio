@@ -31,7 +31,7 @@ export async function connectDb(): Promise<typeof mongoose> {
 
   if (!cache.promise) {
     mongoose.set("strictQuery", true);
-    cache.promise = mongoose.connect(MONGODB_URI, {
+    cache.promise = mongoose.connect(MONGODB_URI!, {
       dbName: "cyber-portfolio",
     });
   }
