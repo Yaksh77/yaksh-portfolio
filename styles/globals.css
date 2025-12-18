@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+
+  /* Background layers */
+  --bg-main: 248 250 252; /* page background */
+  --bg-elevated: 255 255 255; /* cards, panels */
+  --bg-glass: 255 255 255; /* glass surfaces (alpha applied in usage) */
+
+  /* Text colors */
+  --text-main: 15 23 42; /* primary body text */
+  --text-muted: 71 85 105; /* secondary text */
+  --text-subtle: 100 116 139; /* tertiary / labels */
+
+  /* Borders & effects */
+  --border-glass: 148 163 184;
+  --shadow-glass: 0 18px 45px rgba(15, 23, 42, 0.16);
+
+  /* Accent colors */
+  --accent-cyan: 34 211 238;
+  --accent-blue: 56 189 248;
+  --accent-violet: 168 85 247;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Background layers */
+  --bg-main: 2 6 23; /* deep background */
+  --bg-elevated: 15 23 42; /* elevated cards */
+  --bg-glass: 15 23 42; /* glass surfaces (alpha applied in usage) */
+
+  /* Text colors */
+  --text-main: 241 245 249; /* bright readable text */
+  --text-muted: 148 163 184;
+  --text-subtle: 100 116 139;
+
+  /* Borders & effects */
+  --border-glass: 51 65 85;
+  --shadow-glass: 0 0 0 1px rgba(148, 163, 184, 0.3),
+    0 22px 65px rgba(15, 23, 42, 0.9), 0 0 55px rgba(34, 211, 238, 0.4);
+
+  /* Accent colors */
+  --accent-cyan: 34 211 238;
+  --accent-blue: 56 189 248;
+  --accent-violet: 129 140 248;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  background-color: rgb(var(--bg-main));
+  color: rgb(var(--text-main));
+  @apply antialiased;
+}
+
+.glass-panel {
+  @apply rounded-3xl backdrop-blur-xl;
+  background-color: rgb(var(--bg-glass) / 0.82);
+  border: 1px solid rgb(var(--border-glass) / 0.45);
+  box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-2 text-sm font-medium transition;
+  background-image: linear-gradient(
+    to right,
+    rgb(var(--accent-cyan)),
+    rgb(var(--accent-violet))
+  );
+  color: rgb(var(--bg-main));
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.55);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid rgb(var(--accent-cyan));
+  outline-offset: 2px;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-2 text-sm font-medium transition;
+  background-color: rgb(var(--bg-glass) / 0.8);
+  color: rgb(var(--text-muted));
+  border: 1px solid rgb(var(--border-glass) / 0.55);
+}
+
+.btn-ghost:hover {
+  background-color: rgb(var(--bg-glass) / 0.9);
+  color: rgb(var(--accent-cyan));
+  border-color: rgb(var(--accent-cyan));
+}
+
+.btn-ghost:focus-visible {
+  outline: 2px solid rgb(var(--accent-cyan));
+  outline-offset: 2px;
+}
+
+.pill {
+  @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em];
+  background-color: rgb(var(--bg-glass) / 0.9);
+  border: 1px solid rgb(var(--border-glass) / 0.5);
+  color: rgb(var(--text-subtle));
+}
+
+.page-shell {
+  @apply mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-10 md:px-8 md:pb-20 md:pt-16;
+}
+
+.section-shell {
+  @apply glass-panel p-6 md:p-9;
+}
